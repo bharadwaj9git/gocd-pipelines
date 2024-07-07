@@ -26,9 +26,9 @@ pipelines:
                       - backend-dev.saidevops79.online
                       - -e
                       - ansible_user=ec2-user
-                      - e
+                      - -e
                       - ansible_password=DevOps321
-                      - e
+                      - -e
                       - env=dev
                       - -e
                       - role_name=backend
