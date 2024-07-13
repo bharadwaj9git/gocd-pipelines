@@ -11,6 +11,9 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: main
+    secure_variables:
+      ENV_PASSWORD: "AES:2o0zb4k6gP5+d/sV5PZFgQ==:uJMiYpRi3bqK4DrniOfCEw=="
+
     stages:
       - DEV:
           fetch_materials: true
@@ -27,7 +30,7 @@ pipelines:
                       - -e
                       - ansible_user=ec2-user
                       - -e
-                      - ansible_password=DevOps321
+                      - ansible_password=${ENV_PASSWORD}
                       - -e
                       - env=dev
                       - -e
