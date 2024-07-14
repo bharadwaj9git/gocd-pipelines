@@ -13,9 +13,13 @@ pipelines:
         branch: main
     secure_variables:
       SSH_PWD:  "AES:h81tAOuOlnD0bPH6Tk9GlA==:Uhr/vO+Wz+C2DL1ap8HuyQ=="
+    environment_variables:
+      component: mysql
     stages:
       - DEV:
           fetch_materials: true
+          environment_variables:
+            env: dev
           approval:
             type: manual
           jobs:
@@ -23,7 +27,7 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-#                    arguments:
+                    arguments:
 #                      - -i
 #                      - mysql-dev.saidevops79.online,
 #                      - -e
@@ -35,7 +39,8 @@ pipelines:
 #                      - -e
 #                      - role_name=mysql
 #                      - expense.yml
-                    command: env
+                    - run.sh
+                    command: bash
 
       - QA:
           fetch_materials: true
