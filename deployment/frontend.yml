@@ -23,7 +23,7 @@ pipelines:
                 - exec:
                     arguments:
                       - -i
-                      - frontend-dev.saidevops79.online
+                      - frontend-dev.saidevops79.online,
                       - -e
                       - ansible_user=ec2-user
                       - -e

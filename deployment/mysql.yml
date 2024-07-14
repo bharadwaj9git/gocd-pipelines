@@ -11,8 +11,6 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: main
-    secure_variables:
-      ENV_PASSWORD: "AES:2o0zb4k6gP5+d/sV5PZFgQ==:uJMiYpRi3bqK4DrniOfCEw=="
     stages:
       - DEV:
           fetch_materials: true
@@ -25,11 +23,11 @@ pipelines:
                 - exec:
                     arguments:
                       - -i
-                      - mysql-dev.saidevops79.online
+                      - mysql-dev.saidevops79.online,
                       - -e
                       - ansible_user=ec2-user
                       - -e
-                      - ansible_password=${ENV_PASSWORD}
+                      - ansible_password=DevOps321
                       - -e
                       - env=dev
                       - -e
