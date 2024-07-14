@@ -23,19 +23,19 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    arguments:
-                      - -i
-                      - mysql-dev.saidevops79.online,
-                      - -e
-                      - ansible_user=ec2-user
-                      - -e
-                      - ansible_password=${SSH_PWD}
-                      - -e
-                      - env=dev
-                      - -e
-                      - role_name=mysql
-                      - expense.yml
-                    command: ansible-playbook
+#                    arguments:
+#                      - -i
+#                      - mysql-dev.saidevops79.online,
+#                      - -e
+#                      - ansible_user=ec2-user
+#                      - -e
+#                      - ansible_password=${SSH_PWD}
+#                      - -e
+#                      - env=dev
+#                      - -e
+#                      - role_name=mysql
+#                      - expense.yml
+                    command: env
 
       - QA:
           fetch_materials: true
