@@ -13,6 +13,8 @@ pipelines:
         branch: main
     secure_variables:
       SSH_PWD:  "AES:h81tAOuOlnD0bPH6Tk9GlA==:Uhr/vO+Wz+C2DL1ap8HuyQ=="
+    environment_variables:
+      pipeline: "true"
     stages:
       - DEV:
           fetch_materials: true
