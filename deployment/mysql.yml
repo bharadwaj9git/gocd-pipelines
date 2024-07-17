@@ -15,71 +15,72 @@ pipelines:
       SSH_PWD:  "AES:h81tAOuOlnD0bPH6Tk9GlA==:Uhr/vO+Wz+C2DL1ap8HuyQ=="
     environment_variables:
       component: mysql
-    stages:
-      - DEV:
-          fetch_materials: true
-          environment_variables:
-            env: dev
-          approval:
-            type: manual
-          jobs:
-            ansible:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-#                      - -i
-#                      - mysql-dev.saidevops79.online,
-#                      - -e
-#                      - ansible_user=ec2-user
-#                      - -e
-#                      - ansible_password=${SSH_PWD}
-#                      - -e
-#                      - env=dev
-#                      - -e
-#                      - role_name=mysql
-#                      - expense.yml
-                    - run.sh
-                    command: bash
-
-      - QA:
-          fetch_materials: true
-          approval:
-            type: manual
-          jobs:
-            ansible:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - -l
-                    command: ls
-                    run_if: passed
-
-      - STAGE:
-          fetch_materials: true
-          approval:
-            type: manual
-          jobs:
-            ansible:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - -l
-                    command: ls
-                    run_if: passed
-
-      - PROD:
-          fetch_materials: true
-          approval:
-            type: manual
-          jobs:
-            ansible:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - -l
-                    command: ls
-                    run_if: passed
+    template : ansible-app-deployment
+#    stages:
+#      - DEV:
+#          fetch_materials: true
+#          environment_variables:
+#            env: dev
+#          approval:
+#            type: manual
+#          jobs:
+#            ansible:
+#              timeout: 0
+#              tasks:
+#                - exec:
+#                    arguments:
+##                      - -i
+##                      - mysql-dev.saidevops79.online,
+##                      - -e
+##                      - ansible_user=ec2-user
+##                      - -e
+##                      - ansible_password=${SSH_PWD}
+##                      - -e
+##                      - env=dev
+##                      - -e
+##                      - role_name=mysql
+##                      - expense.yml
+#                    - run.sh
+#                    command: bash
+#
+#      - QA:
+#          fetch_materials: true
+#          approval:
+#            type: manual
+#          jobs:
+#            ansible:
+#              timeout: 0
+#              tasks:
+#                - exec:
+#                    arguments:
+#                      - -l
+#                    command: ls
+#                    run_if: passed
+#
+#      - STAGE:
+#          fetch_materials: true
+#          approval:
+#            type: manual
+#          jobs:
+#            ansible:
+#              timeout: 0
+#              tasks:
+#                - exec:
+#                    arguments:
+#                      - -l
+#                    command: ls
+#                    run_if: passed
+#
+#      - PROD:
+#          fetch_materials: true
+#          approval:
+#            type: manual
+#          jobs:
+#            ansible:
+#              timeout: 0
+#              tasks:
+#                - exec:
+#                    arguments:
+#                      - -l
+#                    command: ls
+#                    run_if: passed
