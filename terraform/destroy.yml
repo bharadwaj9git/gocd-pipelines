@@ -19,8 +19,8 @@ pipelines:
           jobs:
             terraform:
               tasks:
-                - exec: { command: terraform , arguments: ["init","-backend-config","env-dev/state.tfvars"] }
-                - exec: { command: terraform ,  arguments: ["destroy","-var-file" ,"env-dev/main.tfvars" ,"auto-approve"] }
+                - exec: { command: terraform , arguments: ["init", "-backend-config", "env-dev/state.tfvars"] }
+                - exec: { command: terraform ,  arguments: ["destroy", "-var-file", "env-dev/main.tfvars", "-auto-approve"] }
       - PROD:
           fetch_materials: true
           environment_variables: { env: prod }
@@ -28,5 +28,5 @@ pipelines:
           jobs:
             terraform:
               tasks:
-                - exec: { command: terraform , arguments: [ "init","-backend-config","env-dev/state.tfvars" ] }
-                - exec: { command: terraform ,  arguments: [ "destroy","-var-file" ,"env-dev/main.tfvars" ,"auto-approve" ] }
+                - exec: { command: terraform , arguments: [ "init", "-backend-config", "env-dev/state.tfvars" ] }
+                - exec: { command: terraform ,  arguments: [ "destroy", "-var-file", "env-dev/main.tfvars", "-auto-approve" ] }
