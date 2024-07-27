@@ -20,7 +20,7 @@ pipelines:
             terraform:
               tasks:
                 - exec: { command: terraform , arguments: ["init", "-backend-config", "env-dev/state.tfvars"] }
-                - exec: { command: terraform ,  arguments: ["apply","-var-file", "env-dev/main.tfvars", "auto-approve"] }
+                - exec: { command: terraform ,  arguments: ["apply","-var-file", "env-dev/main.tfvars", "-auto-approve"] }
       - PROD:
           fetch_materials: true
           environment_variables: { env: prod }
@@ -28,8 +28,8 @@ pipelines:
           jobs:
             terraform:
               tasks:
-                - exec: { command: terraform , arguments: [ "init", "-backend-config", "env-dev/state.tfvars" ] }
-                - exec: { command: terraform ,  arguments: [ "apply","-var-file", "env-dev/main.tfvars", "-auto-approve" ] }
+                - exec: { command: terraform , arguments: [ "init", "-backend-config", "env-prod/state.tfvars" ] }
+                - exec: { command: terraform ,  arguments: [ "apply","-var-file", "env-prod/main.tfvars", "-auto-approve" ] }
 
 #    to readable way we created above code previously code like below
 #      - PROD:
