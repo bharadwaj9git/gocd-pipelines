@@ -1,0 +1,32 @@
+format_version: 10
+pipelines:
+  prometheus:
+    group: tools
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-c979c3d:
+        git: https://github.com/bharadwaj9git/tools-automation.git
+        shallow_clone: true
+        auto_update: true
+        branch: main
+    secure_variables:
+      SSH_PWD:  "AES:h81tAOuOlnD0bPH6Tk9GlA==:Uhr/vO+Wz+C2DL1ap8HuyQ=="
+      environment_variables:
+        tool_name : prometheus
+    stages:
+      - DEV:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            ansible:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: bash
+                    arguments:
+                      - setup-tool-service.sh
+
+
